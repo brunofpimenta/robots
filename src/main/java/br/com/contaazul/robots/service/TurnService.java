@@ -3,7 +3,7 @@ package br.com.contaazul.robots.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RobotService {
+public class TurnService {
 
     public String turn(String actualDirection, String turnSide) {
         int angle = getAngle(actualDirection);
