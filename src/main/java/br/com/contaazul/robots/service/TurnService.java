@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class TurnService {
 
-    public String turn(String actualDirection, String turnSide) {
+    public String turn(String actualDirection, char turnSide) {
         int angle = getAngle(actualDirection);
 
-        if ("R".equals(turnSide)) {
+        if ('R' == turnSide) {
             angle += 90;
-        } else if ("L".equals(turnSide)) {
+        } else if ('L' == turnSide) {
             angle -= 90;
         } else {
             throw new IllegalArgumentException("Turn side can only be [L] or [R]");

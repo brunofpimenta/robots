@@ -23,56 +23,56 @@ public class TurnServiceTest {
 
     @Test
     public void turnRightFromNorth() {
-        String direction = turnService.turn("N", "R");
+        String direction = turnService.turn("N", 'R');
 
         assertEquals("E", direction);
     }
 
     @Test
     public void turnRightFromEast() {
-        String direction = turnService.turn("E", "R");
+        String direction = turnService.turn("E", 'R');
 
         assertEquals("S", direction);
     }
 
     @Test
     public void turnRightFromSouth() {
-        String direction = turnService.turn("S", "R");
+        String direction = turnService.turn("S", 'R');
 
         assertEquals("W", direction);
     }
 
     @Test
     public void turnRightFromWest() {
-        String direction = turnService.turn("W", "R");
+        String direction = turnService.turn("W", 'R');
 
         assertEquals("N", direction);
     }
 
     @Test
     public void turnLeftFromNorth() {
-        String direction = turnService.turn("N", "L");
+        String direction = turnService.turn("N", 'L');
 
         assertEquals("W", direction);
     }
 
     @Test
     public void turnLeftFromWest() {
-        String direction = turnService.turn("W", "L");
+        String direction = turnService.turn("W", 'L');
 
         assertEquals("S", direction);
     }
 
     @Test
     public void turnLeftFromSouth() {
-        String direction = turnService.turn("S", "L");
+        String direction = turnService.turn("S", 'L');
 
         assertEquals("E", direction);
     }
 
     @Test
     public void turnLeftFromEast() {
-        String direction = turnService.turn("E", "L");
+        String direction = turnService.turn("E", 'L');
 
         assertEquals("N", direction);
     }
@@ -82,7 +82,7 @@ public class TurnServiceTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage(containsString("Turn side can only be [L] or [R]"));
 
-        turnService.turn("E", "A");
+        turnService.turn("E", 'A');
     }
 
 }
