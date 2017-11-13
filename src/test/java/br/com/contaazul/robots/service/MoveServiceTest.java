@@ -1,5 +1,6 @@
 package br.com.contaazul.robots.service;
 
+import br.com.contaazul.robots.exception.InvalidPositionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,22 +44,22 @@ public class MoveServiceTest {
         assertEquals("0,0", newPosition);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPositionException.class)
     public void moveToNorthOutOfBounds() {
         moveService.move("N", "0,4");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPositionException.class)
     public void moveToEastOutOfBounds() {
         moveService.move("E", "4,0");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPositionException.class)
     public void moveToSouthOutOfBounds() {
         moveService.move("S", "0,0");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPositionException.class)
     public void moveToWestOutOfBounds() {
         moveService.move("W", "0,0");
     }
