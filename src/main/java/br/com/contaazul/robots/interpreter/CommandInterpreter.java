@@ -1,5 +1,6 @@
 package br.com.contaazul.robots.interpreter;
 
+import br.com.contaazul.robots.exception.InvalidCommandException;
 import br.com.contaazul.robots.service.MoveService;
 import br.com.contaazul.robots.service.TurnService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class CommandInterpreter {
             return interpret(++index, position, direction, commands);
         }
 
-        throw new IllegalArgumentException("Invalid command [" + commands[index] + "]. The commands allowed are [M], [L] and [R].");
+        throw new InvalidCommandException("Invalid command [" + commands[index] + "]. The commands allowed are [M], [L] and [R].");
     }
 
 }

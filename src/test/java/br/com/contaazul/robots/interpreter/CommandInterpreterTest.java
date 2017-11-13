@@ -1,5 +1,7 @@
 package br.com.contaazul.robots.interpreter;
 
+import br.com.contaazul.robots.exception.InvalidCommandException;
+import br.com.contaazul.robots.exception.InvalidPositionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,12 +68,12 @@ public class CommandInterpreterTest {
         assertEquals("0,2,W", coordinate);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidCommandException.class)
     public void interpretManyCommands_ContaAzul_4() {
         commandInterpreter.interpret("AAA");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPositionException.class)
     public void interpretManyCommands_ContaAzul_5() {
         commandInterpreter.interpret("MMMMMMMMMMMMMMMMMMMMMMMM");
     }
