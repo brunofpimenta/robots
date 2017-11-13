@@ -1,5 +1,6 @@
 package br.com.contaazul.robots.service;
 
+import br.com.contaazul.robots.exception.InvalidCommandException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class TurnService {
         } else if ('L' == turnSide) {
             angle -= 90;
         } else {
-            throw new IllegalArgumentException("Turn side can only be [L] or [R]");
+            throw new InvalidCommandException("Turn side can only be [L] or [R]");
         }
 
         return getDirection(angle);

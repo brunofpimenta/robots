@@ -1,5 +1,6 @@
 package br.com.contaazul.robots.service;
 
+import br.com.contaazul.robots.exception.InvalidCommandException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -17,9 +18,6 @@ public class TurnServiceTest {
 
     @Autowired
     private TurnService turnService;
-
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void turnRightFromNorth() {
@@ -77,11 +75,8 @@ public class TurnServiceTest {
         assertEquals("N", direction);
     }
 
-    @Test
+    @Test(expected = InvalidCommandException.class)
     public void turnForWrongSide() {
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage(containsString("Turn side can only be [L] or [R]"));
-
         turnService.turn("E", 'A');
     }
 
