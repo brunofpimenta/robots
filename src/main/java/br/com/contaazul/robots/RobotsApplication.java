@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RobotsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RobotsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RobotsApplication.class, args);
+    }
+
 }
