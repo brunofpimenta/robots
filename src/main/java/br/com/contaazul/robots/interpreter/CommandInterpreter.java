@@ -18,19 +18,30 @@ public class CommandInterpreter {
         this.turnService = turnService;
     }
 
-    public String interpret(String command) {
+    public String interpret(String commandList) {
         String position = "0,0";
         String direction = "N";
 
-        if ("M".equals(command)) {
+        return interpret(0, position, direction, commandList.toCharArray());
+    }
+
+    private String interpret(int index, String position, String direction, char[] commands) {
+
+        if (index > commands.length - 1) {
+            return String.format("%s,%s", position, direction);
+        }
+
+        if ('M' == commands[index]) {
             position = moveService.move(direction, position);
+            return interpret(++index, position, direction, commands);
         }
 
-        if ("L".equals(command) || "R".equals(command)) {
-            direction = turnService.turn(direction, command);
+        if ('L' == commands[index] || 'R' == commands[index]) {
+            direction = turnService.turn(direction, commands[index]);
+            return interpret(++index, position, direction, commands);
         }
 
-        return String.format("%s,%s", position, direction);
+        throw new IllegalArgumentException("Invalid command [" + commands[index] + "]. The commands allowed are [M], [L] and [R].");
     }
 
 }

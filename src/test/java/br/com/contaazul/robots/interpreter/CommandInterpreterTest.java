@@ -35,4 +35,44 @@ public class CommandInterpreterTest {
 
         assertEquals("0,0,E", coordinate);
     }
+
+    @Test
+    public void interpretManyCommands() {
+        String coordinate = commandInterpreter.interpret("RMLMM");
+
+        assertEquals("1,2,N", coordinate);
+    }
+
+    //Testes fornecidos pela Conta Azul
+
+    @Test
+    public void interpretManyCommands_ContaAzul_1() {
+        String coordinate = commandInterpreter.interpret("MMRMMRMM");
+
+        assertEquals("2,0,S", coordinate);
+    }
+
+    @Test
+    public void interpretManyCommands_ContaAzul_2() {
+        String coordinate = commandInterpreter.interpret("MML");
+
+        assertEquals("0,2,W", coordinate);
+    }
+
+    @Test
+    public void interpretManyCommands_ContaAzul_3() {
+        String coordinate = commandInterpreter.interpret("MML");
+
+        assertEquals("0,2,W", coordinate);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void interpretManyCommands_ContaAzul_4() {
+        commandInterpreter.interpret("AAA");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void interpretManyCommands_ContaAzul_5() {
+        commandInterpreter.interpret("MMMMMMMMMMMMMMMMMMMMMMMM");
+    }
 }
